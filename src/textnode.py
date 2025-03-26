@@ -1,26 +1,28 @@
 from enum import Enum
 
+
 class TextType(Enum):
-    NORMAL = 1
-    BOLD = 2
-    ITALIC = 3
-    CODE = 4
-    LINK = 5
-    IMAGE = 6
-    
+    NORMAL = "normal"
+    BOLD = "bold"
+    ITALIC = "italic"
+    CODE = "code"
+    LINK = "link"
+    IMAGE = "image"
+
+
 class TextNode:
-    def __init__(self, text, text_type, url = None):
+    def __init__(self, text, text_type, url=None):
         self.text = text
         self.text_type = text_type
-        self.url = url 
-        
+        self.url = url
+
     def __eq__(self, other):
-        return self.text == other.text and self.text_type == other.text_type and self.url == other.url 
-    
+        return (
+            self.text == other.text
+            and self.text_type == other.text_type
+            and self.url == other.url
+        )
+
     def __repr__(self):
         class_name = type(self).__name__
-        return f"{class_name}({self.text},{self.text_type},{self.url})"
-
-        
-
-        
+        return f"{class_name}({self.text}, {self.text_type.value}, {self.url})"
